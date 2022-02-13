@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-    isAdminLoggedIn: (req, res, next) => {
+    isLandlordLoggedIn: (req, res, next) => {
         try {
           const token = req.cookies.jwt;
           const decoded = jwt.verify(
@@ -14,7 +14,7 @@ module.exports = {
           return res.redirect('/login');
         }
       } ,
-      isDonorLoggedIn: (req, res, next) => {
+      isTenantLoggedIn: (req, res, next) => {
         try {
           const tokenn = req.cookies.jwt;
           const decodedd = jwt.verify(

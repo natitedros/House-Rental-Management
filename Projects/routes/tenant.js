@@ -5,12 +5,12 @@ const authentication = require('../middleware/authentication.js');
 const router = Router();
 
 //Home Page for Tenant
-router.get("/tenant/home",  authentication.isAdminLoggedIn   , (req, res) => {
+router.get("/tenant/home",  authentication.isTenantLoggedIn, (req, res) => {
     res.render("Tenant/tenantHome", { error: false, error2: false});
 });
 
 //Popular Houses List
-router.get('/popular' , (req , res) => {
+router.get('/popular' , authentication.isTenantLoggedIn,(req , res) => {
     const sql = "select houses.* from houses left join houserating on houses.HouseNo = houserating.idHouseRating where houserating.Rating >= 3 ";
     db.query(sql , (err , result) => {
         

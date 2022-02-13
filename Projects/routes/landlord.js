@@ -5,7 +5,7 @@ const authentication = require('../middleware/authentication.js');
 const router = Router();
 
 //Landlord Home Page
-router.get('/landlord/home' , (req , res) => {
+router.get('/landlord/home' , authentication.isLandlordLoggedIn,(req , res) => {
     const sql = "select * from landlord right join houses on landlord.idLandlord = houses.HouseNo where houses.Owner = 1";
     db.query(sql,[req.params.id] , (err , result) => {
         
@@ -18,13 +18,13 @@ router.get('/landlord/home' , (req , res) => {
 });
 
 //Add House
-router.get('/addhouse' , (req , res) => {
+router.get('/addhouse' , authentication.isLandlordLoggedIn,(req , res) => {
 
     res.render('./LandLord/addHouse.ejs' );
 
 });
 
-router.post('/landlord/addhouse' , (req , res) => {
+router.post('/landlord/addhouse' , authentication.isLandlordLoggedIn,(req , res) => {
 
     console.log(req.body);
     let sql = "INSERT INTO houses values ('" + req.body.houseNo + "' , '" + req.body.location + "' , '" + req.body.price + "' , '" + req.body.date + "' , '" + req.body.availibility + "' , '" + req.body.owner + "')";
