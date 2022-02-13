@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Landlord home page</h1>
+    <% data.forEach(entry => { %>
+          <div>
+        <h3>House Number : <%= entry.HouseNo%></h3>
+        <p>Location : <%= entry.Location%></p>
+        <p>Price Per Hour : <%= entry.PricePerHour%></p>
+        <p>Availibility : <%= entry.Availibility%></p>
+        </div>
+    <% }) %>
+
+    <h4><a href="/addhouse">Add house</a></h4>
+</body>
+</html>
