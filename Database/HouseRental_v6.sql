@@ -55,9 +55,9 @@ CREATE TABLE `Houses` (
   `HouseNo` varchar(30) NOT NULL,
   `Location` varchar(45) NOT NULL,
   `PricePerHour` int NOT NULL,
+  `Owner` int NOT NULL,
   `DateAdded` datetime NOT NULL,
-  `Availibility` varchar(10) DEFAULT NULL,
-  `Owner` varchar(10) NOT NULL,
+  `Availibility` int DEFAULT NULL,
   PRIMARY KEY (`HouseNo`),
   KEY `OwnerForeign_idx` (`Owner`),
   CONSTRAINT `OwnerForeign` FOREIGN KEY (`Owner`) REFERENCES `Landlord` (`idLandlord`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -135,7 +135,7 @@ DROP TABLE IF EXISTS `Landlord`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Landlord` (
-  `idLandlord` varchar(10) NOT NULL,
+  `idLandlord` int NOT NULL AUTO_INCREMENT,
   `Password` varchar(45) NOT NULL,
   `LandlordRating` int DEFAULT NULL,
   `PersonalInfoLandlord` int NOT NULL,
@@ -190,8 +190,8 @@ DROP TABLE IF EXISTS `RentalRequest`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `RentalRequest` (
   `idRentalRequest` int NOT NULL AUTO_INCREMENT,
+  `Tenant` int NOT NULL,
   `HouseNumberId` varchar(30) NOT NULL,
-  `Tenant` varchar(10) NOT NULL,
   PRIMARY KEY (`idRentalRequest`),
   KEY `HouseNumberId_idx` (`HouseNumberId`),
   KEY `TenantForeign_idx` (`Tenant`),
@@ -217,7 +217,7 @@ DROP TABLE IF EXISTS `Tenant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Tenant` (
-  `idTenant` varchar(10) NOT NULL,
+  `idTenant` int NOT NULL AUTO_INCREMENT,
   `Password` varchar(45) NOT NULL,
   `Rating` int DEFAULT NULL,
   `PersonalInfoTenant` int NOT NULL,
@@ -245,4 +245,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-13 13:51:57
+-- Dump completed on 2022-02-14  0:41:02
