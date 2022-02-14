@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <h1>Requests From Potential Tenants</h1>
+    <p>
+        <table>
+            <tr>
+                <th>Tenant Name</th> <!--make the names links to the tenant info page-->
+                <th>House Number</th><!--make the numbers links to the house information page-->
+                <th>Accept</th>
+                <th>Reject</th>
+            </tr>
+            <tr>
+                <td>    <%=  result[0].FullName     %>     </td>
+                <td>    <%=  result[0].StudentID    %>     </td>
+                <td>    <%=  result[0].IDStatus    %>     </td>
+                <td>  <a href="account/activate/<%=  result[0].FullName %>"> active</a> </td>
+                <td>  <a href="account/deactivate/<%= result[0].FullName %>"> deactive</a> </td>
+
+            </tr>
+        </table>
+    </p>
+    
+</body>
+</html>

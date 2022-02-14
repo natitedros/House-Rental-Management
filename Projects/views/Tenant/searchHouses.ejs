@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <h1>Requests From Potential Tenants</h1>
+    <div name="searchInputs">
+        <form action="/admin/account"   method="POST">
+            <label for="occupation">Occupation:</label>
+            <select name="occupation" id="cars">
+                <option value="Student">Student</option>
+                <option value="Instructor">Instructor</option>
+                <option value="Administrator">Administrator</option>
+            </select><br><br>
+            <label for="">Id Number:</label>
+            <input type="textfield" name="id" ><br><br>
+            <input type="Submit" name="Submit">
+        </form>
+    </div>
+
+    <div name="searchOutputs">
+        <%if (result) { %>
+            <h2>Houses:</h2>
+            <table>
+                <tr>
+                    <th>House Number</th>
+                    <th>Send Request</th>
+                   
+                </tr>
+                <tr>
+                    <td>    <%=  result[0].FullName     %>     </td>
+                    <td>  <a href="account/activate/<%=  result[0].FullName %>"> active</a> </td>
+    
+                </tr>
+            </table><br><br>
+            <% } %>
+        </div>
+    </div>
+    
+</body>
+</html>
