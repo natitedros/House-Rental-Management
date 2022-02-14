@@ -25,7 +25,7 @@ router.get('/tenant/popular' , authentication.isTenantLoggedIn,(req , res) => {
     })
 });
 
-router.get('/tenant/popular/:id' , (req , res) => {
+router.get('/tenant/popular/:id' , authentication.isTenantLoggedIn, (req , res) => {
     const sql = `SELECT * FROM houses LEFT JOIN housinginfo 
     ON houses.HouseNo = housingInfo.HouseNumber 
     WHERE housinginfo.HouseNumber = ?`;
@@ -69,7 +69,7 @@ router.get('/tenant/cheapest' , authentication.isTenantLoggedIn,(req , res) => {
     })
 });
 
-router.get('/tenant/cheapest/:id' , (req , res) => {
+router.get('/tenant/cheapest/:id' , authentication.isTenantLoggedIn, (req , res) => {
     const sql = `SELECT * FROM houses LEFT JOIN housinginfo 
     ON houses.HouseNo = housingInfo.HouseNumber 
     WHERE housinginfo.HouseNumber = ?`;
@@ -97,7 +97,7 @@ router.get('/tenant/request' , authentication.isTenantLoggedIn,(req , res) => {
     })
 });
 
-router.get('/tenant/request/:id' , (req , res) => {
+router.get('/tenant/request/:id' , authentication.isTenantLoggedIn, (req , res) => {
     const sql = `SELECT * FROM houses LEFT JOIN housinginfo 
     ON houses.HouseNo = housingInfo.HouseNumber 
     WHERE housinginfo.HouseNumber = ?`;

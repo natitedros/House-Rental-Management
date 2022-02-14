@@ -8,5 +8,14 @@
 </head>
 <body>
     <h1>Request approval</h1>
+
+    <% data.forEach(entry => { %>
+    
+        <h3>Tenant :  <%= entry.Tenant%></h3>
+        <h3>House Number Id :  <%= entry.HouseNumberId%></h3>
+           
+        
+    
+          <% }) %>
 </body>
 </html>

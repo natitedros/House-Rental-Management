@@ -32,6 +32,13 @@ router.post('/landlord/addhouse' , authentication.isLandlordLoggedIn,(req , res)
         if(err){
             console.log("error quering sql");
         }
+        let my_sql = "INSERT INTO HousingInfo (sqArea, NoOfBedrooms, Legality, HouseNumber) values ('" + req.body.sqarea + "','" + req.body.noofbedrooms + "','" + req.body.legality + "','" + req.body.houseNo + "') "
+        db.query (my_sql , (err , result) => {
+            if (err) throw err ; 
+            else {
+                console.log(req.result);
+            }
+        })
        res.redirect('/landlord/home' );
    });
    
@@ -39,7 +46,10 @@ router.post('/landlord/addhouse' , authentication.isLandlordLoggedIn,(req , res)
 });
 
 router.get('/landlord/requestapproval' , authentication.isLandlordLoggedIn,(req , res) => {
-    const sql = "";
+    const sql = `SELECT RentalRequest.Tenant, RentalRequest.HouseNumberId
+    FROM RentalRequest left join Houses
+   ON RentalRequest.HouseNumberId = houses.HouseNo
+   where Houses.Owner = 1`;
     db.query(sql , (err , result) => {
         
         if (err) {
