@@ -7,14 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-   
-    <h1>Cheapest Houses</h1>
-    
+    <h1>Request page</h1>
     <% data.forEach(entry => { %>
+        
            
-        <h3><a href="/tenant/cheapest/<%= entry.HouseNo %>"> House <%= entry.HouseNo%> </a></h3>
+        <h3><a href="/tenant/request/<%= entry.HouseNo %>"> House <%= entry.HouseNo%> </a></h3>
+
+    
         
     <% }) %>
-    
+
 </body>
 </html>

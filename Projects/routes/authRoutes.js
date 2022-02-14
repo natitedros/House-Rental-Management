@@ -52,7 +52,7 @@ let sql2 = `select *
                 
                 pass=true;
                 res.cookie('jwt' , token , {httpOnly:true , maxAge:3600*1000});
-                res.redirect('/tenant/profile')
+                res.redirect('/tenant/home')
       
                  
           } 

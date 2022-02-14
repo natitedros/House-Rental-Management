@@ -18,7 +18,7 @@ router.get('/landlord/home' , authentication.isLandlordLoggedIn,(req , res) => {
 });
 
 //Add House
-router.get('/addhouse' , authentication.isLandlordLoggedIn,(req , res) => {
+router.get('/landlord/addhouse' , authentication.isLandlordLoggedIn,(req , res) => {
 
     res.render('./LandLord/addHouse.ejs' );
 
@@ -27,7 +27,7 @@ router.get('/addhouse' , authentication.isLandlordLoggedIn,(req , res) => {
 router.post('/landlord/addhouse' , authentication.isLandlordLoggedIn,(req , res) => {
 
     console.log(req.body);
-    let sql = "INSERT INTO houses values ('" + req.body.houseNo + "' , '" + req.body.location + "' , '" + req.body.price + "' , '" + req.body.date + "' , '" + req.body.availibility + "' , '" + req.body.owner + "')";
+    let sql = "INSERT INTO houses values ('" + req.body.houseNo + "' , '" + req.body.location + "' , '" + req.body.price + "' ,'" + req.body.owner + "', '" + req.body.date + "' , '" + req.body.availibility +"')";
     db.query(sql , (err , result) => {
         if(err){
             console.log("error quering sql");
@@ -36,6 +36,18 @@ router.post('/landlord/addhouse' , authentication.isLandlordLoggedIn,(req , res)
    });
    
 
+});
+
+router.get('/landlord/requestapproval' , authentication.isLandlordLoggedIn,(req , res) => {
+    const sql = "";
+    db.query(sql , (err , result) => {
+        
+        if (err) {
+            console.log("error quering sql");
+        }
+        console.log(result);
+        res.render('./LandLord/requestApproval.ejs' , {data : result} );
+    })
 });
 
 //
